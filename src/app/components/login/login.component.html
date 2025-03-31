@@ -1,0 +1,57 @@
+<div class="login">
+  <h2 class="login__title">Connexion</h2>
+  <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login__field">
+      <label for="email" class="login__label">Email</label>
+      <input
+        type="email"
+        class="login__input"
+        formControlName="email"
+        required
+      />
+      <div
+        *ngIf="
+          loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+        "
+        class="error"
+      >
+        <span *ngIf="loginForm.get('email')?.hasError('required')"
+          >L'email est obligatoire.</span
+        >
+        <span *ngIf="loginForm.get('email')?.hasError('email')"
+          >Format d'email invalide.</span
+        >
+      </div>
+    </div>
+    <div class="login__field">
+      <label for="password" class="login__label">Mot de passe</label>
+      <input
+        type="passord"
+        class="login__input"
+        formControlName="password"
+        required
+      />
+      <div
+        *ngIf="
+          loginForm.get('password')?.invalid &&
+          loginForm.get('password')?.touched
+        "
+        class="error"
+      >
+        <span *ngIf="loginForm.get('password')?.hasError('required')"
+          >Le mot de passe est obligatoire.</span
+        >
+        <span *ngIf="loginForm.get('password')?.hasError('minlength')"
+          >Minimum 8 caractères.</span
+        >
+        <span *ngIf="loginForm.get('password')?.hasError('pattern')"
+          >Doit contenir majuscule, minuscule, chiffre et caractère
+          spécial.</span
+        >
+      </div>
+    </div>
+
+    <button class="login__button" type="submit">Se connecter</button>
+  </form>
+  <p class="login__message" *ngIf="message">{{ message }}</p>
+</div>

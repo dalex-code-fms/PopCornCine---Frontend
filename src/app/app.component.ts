@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'frontend';
+  loggedIn = false;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.loggedIn$.subscribe((isLoggedIn) => {
+      this.loggedIn = isLoggedIn;
+    });
+  }
+
+  logout(): void {
+    this.authService.logOut();
+    this.loggedIn = false;
+  }
 }
