@@ -22,10 +22,22 @@ export class ApiService {
     return this.http.post<any>(environment.host + '/users/login', credentials);
   }
 
+  public getUserProfile(): Observable<any> {
+    return this.http.get<any>(environment.host + '/users/profile', {
+      headers: this.getHeaders(),
+    });
+  }
+
   public saveUser(credentials: RegisterCredentials): Observable<any> {
     return this.http.post<any>(
       environment.host + '/users/register',
       credentials
     );
+  }
+
+  public updateUserProfile(formData: FormData): Observable<any> {
+    return this.http.put<any>(`${environment.host}/users/update`, formData, {
+      headers: this.getHeaders(),
+    });
   }
 }
