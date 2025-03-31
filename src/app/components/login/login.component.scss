@@ -1,0 +1,126 @@
+@import '../../../styles.scss';
+
+.login {
+    height: calc(100vh - 8rem);
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center;
+    
+    &__iconContainer {
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 40rem;
+        height: 80%;
+        border-radius: 1rem 0 0 1rem;
+        box-shadow: 0 0 10px #FF4040, 0 0 15px #FF4040;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 6rem;
+
+    }
+
+    &__iconContainer .icon {
+        width: 20rem;
+        height: 20rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        
+        &--first {
+            background-image: url('/assets/icons/video.png');
+            filter: drop-shadow(0 0 5px #1E90FF) brightness(1);
+            animation: neonGlowBlue 1.5s infinite alternate;
+            transform: rotate(-15deg);
+        }
+
+        &--second {
+            background-image: url('/assets/icons/popcorn.png');
+            filter: drop-shadow(0 0 5px #FF4040) brightness(1);
+            animation: neonGlowRed 1.5s infinite alternate;
+            transform: rotate(15deg);
+
+        }
+    }
+
+    @keyframes neonGlowBlue {
+        from { filter: drop-shadow(0 0 5px #1E90FF) brightness(1); }
+        to { filter: drop-shadow(0 0 10px #1E90FF) brightness(1.1); }
+    }
+
+    @keyframes neonGlowRed {
+        from { filter: drop-shadow(0 0 5px #FF4040) brightness(1); }
+        to { filter: drop-shadow(0 0 10px #FF4040) brightness(1.1); }
+    }
+
+    &__container {
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 50%;
+        height: 80%;
+        border-radius: 1rem;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+    }
+
+    &__title {
+        font-family: $secondaryFont;
+        font-size: 3.2rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #1E90FF, 0 0 10px #1E90FF, 0 0 15px #1E90FF, 0 0 20px #1E90FF;
+        margin-bottom: 5rem;
+    }
+
+    &__form {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__field {
+        position: relative;        
+    }
+
+    &__label {
+        margin-left: 1.5rem;
+    }
+
+    &__input {
+        width: 100%;
+        border: 1px solid #1E90FF;
+        border-radius: 1rem;
+        height: 5rem;
+        margin-bottom: 4rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        caret-color: #1E90FF;
+        padding: 1.5rem;
+        color: $textColor;
+    }
+
+
+    &__button {
+        align-self: center;
+        background-color: $primaryColor;
+        border-radius: 3rem;
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        text-shadow: 0 0 5px $primaryColor, 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        color: white;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            text-shadow: 0 0 10px $primaryColor, 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+            box-shadow: 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+        }
+    }
+
+    &__message {
+        position: absolute;
+        margin-left: 1.5rem;
+        bottom: 1rem;
+        text-shadow: 0 0 5px #FF4040, 0 0 10px #FF4040, 0 0 15px #FF4040, 0 0 20px #FF4040;
+    }
+}
+

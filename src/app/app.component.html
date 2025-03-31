@@ -1,15 +1,19 @@
 <section class="navbar">
-  <p [routerLink]="['/home']" class="navbar__logo">PopCornCiné</p>
-  <ng-container *ngIf="!loggedIn">
-    <a [routerLink]="['/login']" class="navbar__connexionBtn">Connexion</a>
-    <a [routerLink]="['/register']" class="navbar__registerBtn">S'inscrire</a>
-  </ng-container>
+  <a [routerLink]="['/home']" class="navbar__logo">PopCornCiné</a>
+  <div class="navbar__btnContainer">
+    <ng-container *ngIf="!loggedIn">
+      <a [routerLink]="['/login']" class="navbar__connexionBtn">Connexion</a>
+      <a [routerLink]="['/register']" class="navbar__registerBtn">S'inscrire</a>
+    </ng-container>
 
-  <ng-container *ngIf="loggedIn">
-    <a class="navbar__createEventBtn">Créer événement</a>
-    <a [routerLink]="['/profile']" class="navbar__profilBtn">Profil</a>
-    <a class="navbar__logOut" (click)="logout()">Déconnexion</a>
-  </ng-container>
+    <ng-container *ngIf="loggedIn">
+      <a class="navbar__createEventBtn">Créer événement</a>
+      <a [routerLink]="['/profile']" class="navbar__profilBtn">Profil</a>
+      <a [routerLink]="['/home ']" class="navbar__logOut" (click)="logout()"
+        >Déconnexion</a
+      >
+    </ng-container>
+  </div>
 </section>
 
 <router-outlet></router-outlet>

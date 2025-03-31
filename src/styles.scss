@@ -1,0 +1,84 @@
+$primaryColor: #1E90FF;
+$secondaryColor: #FF4040;
+$textColor: #F5F5F5;
+$primaryFont: 'Roboto', sans-serif;
+$secondaryFont: 'Montserrat', sans-serif;
+
+/* Normalize and reset styles */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px; /* Base font size (1rem = 10px) */
+}
+
+body {
+    font-family: $primaryFont;
+    color: $textColor; /* Texte en couleur claire */
+    line-height: 1.5; /* Meilleure lisibilité */
+    font-size: 1.6rem; /* Taille de police par défaut */
+    -webkit-font-smoothing: antialiased; /* Pour les navigateurs Webkit */
+    -moz-osx-font-smoothing: grayscale; /* Pour Firefox sur macOS */
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/DALL·E\ 2025-03-18\ 08.16.27\ -\ A\ modern\ and\ immersive\ cinema-themed\ background\ resembling\ a\ luxurious\ movie\ theater.\ The\ scene\ is\ set\ in\ a\ dimly\ lit\ room\ with\ red\ and\ blue\ neon\ acce.webp');
+    background-size: cover; /* L'image couvre toute la surface */
+    background-position: center; /* Centrer l'image */
+    background-attachment: fixed; /* Rendre l'image de fond fixe lors du défilement */
+}
+
+a {
+  text-decoration: none; /* Supprimer la décoration des liens */
+  color: inherit; /* Les liens héritent de la couleur du parent */
+}
+
+ul,
+ol {
+  list-style: none; /* Supprimer le style par défaut des listes */
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%; /* Images responsive */
+  height: auto; /* Maintenir le ratio */
+}
+
+table {
+  border-collapse: collapse; /* Suppression de l'espacement entre les cellules */
+}
+
+fieldset {
+  border: none; /* Suppression de la bordure autour des éléments de formulaire */
+  padding: 0;
+}
+
+textarea {
+  resize: vertical; /* Permet de redimensionner verticalement */
+}
+
+input[type="search"] {
+  -webkit-appearance: none; /* Retirer le style par défaut des champs de recherche sur Webkit */
+  -moz-appearance: none; /* Retirer le style par défaut des champs de recherche sur Firefox */
+}
+
+html,
+body {
+  height: 100%; /* Assurer que le body prenne toute la hauteur du viewport */
+}

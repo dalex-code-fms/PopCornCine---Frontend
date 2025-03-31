@@ -1,0 +1,55 @@
+@import '../styles.scss';
+
+.navbar {
+    height: 8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    font-weight: bold;
+
+    &__logo {
+        font-family: $secondaryFont;
+        font-size: 3.2rem;
+        font-weight: bold;
+        text-shadow: 0 0 5px #1E90FF, 0 0 10px #1E90FF, 0 0 15px #1E90FF, 0 0 20px #1E90FF;
+    }
+
+    &__btnContainer {
+        width: 20%;
+        display: flex;
+        justify-content: space-between;
+        gap: 2.5rem;
+        width: auto;
+    }
+
+    &__connexionBtn {
+        background-color: $primaryColor;
+        border-radius: 3rem;
+        padding: 0.5rem 2rem;
+        text-shadow: 0 0 5px $primaryColor, 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        color: white;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            text-shadow: 0 0 10px $primaryColor, 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+            box-shadow: 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+        }
+    }
+
+    &__registerBtn {
+        background-color: $secondaryColor;
+        border-radius: 3rem;
+        padding: 0.5rem 2rem; 
+        text-shadow: 0 0 5px $secondaryColor, 0 0 10px $secondaryColor, 0 0 15px $secondaryColor;
+        box-shadow: 0 0 10px $secondaryColor, 0 0 15px $secondaryColor;
+        color: white;
+        transition: all 0.3s ease;
+
+        &:hover {
+            text-shadow: 0 0 10px $secondaryColor, 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+            box-shadow: 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+        }
+    }
+}
