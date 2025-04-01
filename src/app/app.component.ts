@@ -10,12 +10,16 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'frontend';
   loggedIn = false;
+  photoUrl: string | null = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.loggedIn$.subscribe((isLoggedIn) => {
       this.loggedIn = isLoggedIn;
+    });
+    this.authService.photoUrl$.subscribe((photoUrl) => {
+      this.photoUrl = photoUrl;
     });
   }
 

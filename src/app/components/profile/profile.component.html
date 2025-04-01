@@ -1,112 +1,7 @@
 <div class="profile">
-  <h2 class="profile__title">Mon Profil</h2>
+  <h2 class="profile__title">{{ userFullName }}</h2>
   <form class="profile__form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <div class="profile__field">
-      <label for="firstName" class="profile__label">Prénom</label>
-      <input
-        type="text"
-        class="profile__input"
-        formControlName="firstName"
-        required
-      />
-      <div
-        *ngIf="
-          profileForm.get('firstName')?.invalid &&
-          profileForm.get('firstName')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="profileForm.get('firstName')?.hasError('required')"
-          >Le prénom est obligatoire.</span
-        >
-      </div>
-    </div>
-
-    <!-- Nom -->
-    <div class="profile__field">
-      <label for="lastName" class="profile__label">Nom</label>
-      <input
-        type="text"
-        class="profile__input"
-        formControlName="lastName"
-        required
-      />
-      <div
-        *ngIf="
-          profileForm.get('lastName')?.invalid &&
-          profileForm.get('lastName')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="profileForm.get('lastName')?.hasError('required')"
-          >Le nom est obligatoire.</span
-        >
-      </div>
-    </div>
-
-    <!-- Âge -->
-    <div class="profile__field">
-      <label for="age" class="profile__label">Âge</label>
-      <input
-        type="number"
-        class="profile__input"
-        formControlName="age"
-        required
-      />
-      <div
-        *ngIf="
-          profileForm.get('age')?.invalid && profileForm.get('age')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="profileForm.get('age')?.hasError('required')"
-          >L'âge est obligatoire.</span
-        >
-        <span *ngIf="profileForm.get('age')?.hasError('min')"
-          >L'âge minimum est de 12 ans.</span
-        >
-      </div>
-    </div>
-
-    <!-- Téléphone -->
-    <div class="profile__field">
-      <label for="phone" class="profile__label">Téléphone</label>
-      <input
-        type="text"
-        class="profile__input"
-        formControlName="phone"
-        required
-      />
-      <div
-        *ngIf="
-          profileForm.get('phone')?.invalid && profileForm.get('phone')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="profileForm.get('phone')?.hasError('required')"
-          >Le numéro de téléphone est obligatoire.</span
-        >
-        <span *ngIf="profileForm.get('phone')?.hasError('pattern')"
-          >Le numéro doit commencer par +33 ou 0 et contenir 9 chiffres.</span
-        >
-      </div>
-    </div>
-
-    <!-- Description -->
-    <div class="profile__field">
-      <label for="description" class="profile__label">Description</label>
-      <textarea class="profile__input" formControlName="description"></textarea>
-    </div>
-
-    <!-- Photo -->
-    <div class="profile__field">
-      <label for="photo" class="profile__label">Photo de profil</label>
-      <input
-        type="file"
-        class="profile__input"
-        (change)="onFileChange($event)"
-        accept="image/*"
-      />
       <div *ngIf="currentPhotoUrl" class="profile__photo-preview">
         <img
           [src]="currentPhotoUrl"
@@ -114,9 +9,111 @@
           class="profile__photo-preview-img"
         />
       </div>
+      <label for="photo" class="profile__label">Photo de profil</label>
+      <input
+        type="file"
+        class="profile__input"
+        (change)="onFileChange($event)"
+        accept="image/*"
+      />
     </div>
 
-    <!-- Bouton de soumission -->
+    <div class="profile__firstInputs">
+      <div class="profile__field">
+        <label for="firstName" class="profile__label">Prénom</label>
+        <input
+          type="text"
+          class="profile__input"
+          formControlName="firstName"
+          required
+        />
+        <div
+          *ngIf="
+            profileForm.get('firstName')?.invalid &&
+            profileForm.get('firstName')?.touched
+          "
+          class="error"
+        >
+          <span *ngIf="profileForm.get('firstName')?.hasError('required')"
+            >Le prénom est obligatoire.</span
+          >
+        </div>
+      </div>
+
+      <div class="profile__field">
+        <label for="lastName" class="profile__label">Nom</label>
+        <input
+          type="text"
+          class="profile__input"
+          formControlName="lastName"
+          required
+        />
+        <div
+          *ngIf="
+            profileForm.get('lastName')?.invalid &&
+            profileForm.get('lastName')?.touched
+          "
+          class="error"
+        >
+          <span *ngIf="profileForm.get('lastName')?.hasError('required')"
+            >Le nom est obligatoire.</span
+          >
+        </div>
+      </div>
+
+      <div class="profile__field">
+        <label for="age" class="profile__label">Âge</label>
+        <input
+          type="number"
+          class="profile__input"
+          formControlName="age"
+          required
+        />
+        <div
+          *ngIf="
+            profileForm.get('age')?.invalid && profileForm.get('age')?.touched
+          "
+          class="error"
+        >
+          <span *ngIf="profileForm.get('age')?.hasError('required')"
+            >L'âge est obligatoire.</span
+          >
+          <span *ngIf="profileForm.get('age')?.hasError('min')"
+            >L'âge minimum est de 12 ans.</span
+          >
+        </div>
+      </div>
+
+      <div class="profile__field">
+        <label for="phone" class="profile__label">Téléphone</label>
+        <input
+          type="text"
+          class="profile__input"
+          formControlName="phone"
+          required
+        />
+        <div
+          *ngIf="
+            profileForm.get('phone')?.invalid &&
+            profileForm.get('phone')?.touched
+          "
+          class="error"
+        >
+          <span *ngIf="profileForm.get('phone')?.hasError('required')"
+            >Le numéro de téléphone est obligatoire.</span
+          >
+          <span *ngIf="profileForm.get('phone')?.hasError('pattern')"
+            >Le numéro doit commencer par +33 ou 0 et contenir 9 chiffres.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="profile__field">
+      <label for="description" class="profile__label">Description</label>
+      <textarea class="profile__input" formControlName="description"></textarea>
+    </div>
+
     <button
       class="profile__button"
       type="submit"
@@ -127,84 +124,3 @@
   </form>
   <p class="profile__message" *ngIf="message">{{ message }}</p>
 </div>
-
-<!-- CSS intégré dans le fichier HTML -->
-<style>
-  .profile {
-    font-family: Arial, sans-serif;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-
-  .profile__title {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  .profile__form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .profile__field {
-    margin-bottom: 15px;
-  }
-
-  .profile__label {
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-
-  .profile__input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-
-  .profile__photo-preview {
-    margin-top: 10px;
-  }
-
-  .profile__photo-preview-img {
-    width: 100px; /* Largeur de la photo de profil */
-    height: 100px; /* Hauteur de la photo de profil */
-    object-fit: cover; /* Pour que l'image remplisse l'espace sans déformation */
-    border-radius: 50%; /* Pour une forme circulaire */
-    border: 2px solid #ddd; /* Bordure légère autour de l'image */
-  }
-
-  .profile__button {
-    padding: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .profile__button:disabled {
-    background-color: #ddd;
-  }
-
-  .profile__message {
-    text-align: center;
-    color: green;
-    font-size: 14px;
-    margin-top: 20px;
-  }
-</style>

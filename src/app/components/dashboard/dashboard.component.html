@@ -1,0 +1,24 @@
+<div class="dashboard">
+  <div class="dashboard__btnContainer">
+    <a
+      class="dashboard__btn"
+      [class.dashboard__btn--active]="activeSection === 'profile'"
+      (click)="setActiveSection('profile')"
+      >Profil</a
+    >
+    <a
+      class="dashboard__btn"
+      (click)="setActiveSection('myEvents')"
+      [class.dashboard__btn--active]="activeSection === 'myEvents'"
+      >Mes événements</a
+    >
+    <a class="dashboard__btn">Amis</a>
+    <a class="dashboard__btn">Invitations</a>
+    <a class="dashboard__btn">Messages</a>
+    <a class="dashboard__btn">Notifications</a>
+  </div>
+  <div class="dashboard__contentContainer">
+    <app-profile *ngIf="activeSection === 'profile'"></app-profile>
+    <app-my-events *ngIf="activeSection === 'myEvents'"></app-my-events>
+  </div>
+</div>

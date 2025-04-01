@@ -8,10 +8,32 @@
 
     <ng-container *ngIf="loggedIn">
       <a class="navbar__createEventBtn">Créer événement</a>
-      <a [routerLink]="['/profile']" class="navbar__profilBtn">Profil</a>
-      <a [routerLink]="['/home ']" class="navbar__logOut" (click)="logout()"
-        >Déconnexion</a
-      >
+      <div class="navbar__dashboardBtnContainer">
+        <a
+          [style.backgroundImage]="
+            photoUrl
+              ? 'url(' + photoUrl + ')'
+              : 'url(/assets/icons/profile-blue.png)'
+          "
+          [routerLink]="['/dashboard']"
+          class="navbar__dashboardBtn"
+        ></a>
+        <div class="navbar__dropdown">
+          <a
+            [routerLink]="['/dashboard']"
+            [queryParams]="{ section: 'profile' }"
+            >Profil</a
+          >
+          <a
+            [routerLink]="['/dashboard']"
+            [queryParams]="{ section: 'myEvents' }"
+            >Mes événements</a
+          >
+          <a [routerLink]="['/home']" class="navbar__logOut" (click)="logout()"
+            >Déconnexion</a
+          >
+        </div>
+      </div>
     </ng-container>
   </div>
 </section>

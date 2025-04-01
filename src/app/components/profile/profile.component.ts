@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/service/api.service';
@@ -9,11 +9,12 @@ import { AuthService } from 'src/app/service/auth.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
   profileForm!: FormGroup;
   message: string = '';
   currentPhotoUrl: string | null = null;
   selectedFile: File | null = null;
+  userFullName: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,6 +61,8 @@ export class ProfileComponent implements OnInit {
         this.currentPhotoUrl = user.photoUrl
           ? `http://localhost:8080${user.photoUrl}`
           : null;
+        this.authService.updatePhotoUrl(this.currentPhotoUrl);
+        this.userFullName = `${user.lastName} ${user.firstName}`.toUpperCase();
       },
       error: (err) => {
         this.message = 'Erreur lors du chargement du profil.';
@@ -73,7 +76,7 @@ export class ProfileComponent implements OnInit {
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
       const reader = new FileReader();
-      reader.onload = (e: any) => (this.currentPhotoUrl = e.target.result); // Preview new photo
+      reader.onload = (e: any) => (this.currentPhotoUrl = e.target.result);
       reader.readAsDataURL(this.selectedFile);
     }
   }

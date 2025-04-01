@@ -1,0 +1,53 @@
+@import '../../../styles.scss';
+       
+.dashboard {
+    margin-top: 4rem;
+    width: 100%;
+    height: calc(100vh - 12rem);
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 2rem;
+
+    &__btnContainer {
+        display: flex;
+        flex-direction: column;
+        align-self: start;
+        gap: 2rem;
+    }
+
+    &__contentContainer {
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 50%;
+        height: auto;
+        border-radius: 1rem;
+        border: .1rem solid $primaryColor;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+    }
+
+    &__btn {
+        font-weight: bold;
+        text-align: center;
+        background-color: $primaryColor;
+        border-radius: 3rem 0 0 3rem;
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        color: white;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        
+        &:hover {
+            box-shadow: 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+        }
+
+        &--active {
+            background-color: $secondaryColor;
+            box-shadow: 0 0 10px $secondaryColor, 0 0 15px $secondaryColor;
+        }
+
+        &--active:hover {
+            box-shadow: 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+        }
+    }
+}

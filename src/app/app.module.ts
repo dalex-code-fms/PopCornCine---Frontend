@@ -7,11 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { MyEventsComponent } from './components/my-events/my-events.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ProfileComponent, RegisterComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    RegisterComponent,
+    DashboardComponent,
+    ProfileComponent,
+    MyEventsComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

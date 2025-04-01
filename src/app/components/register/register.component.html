@@ -1,155 +1,186 @@
 <div class="register">
-  <h2 class="register__title">Inscription</h2>
-  <form
-    class="register__form"
-    [formGroup]="registerForm"
-    (ngSubmit)="onSubmit()"
-  >
-    <div class="register__field">
-      <label for="lastName" class="register__label">Nom</label>
-      <input
-        type="text"
-        class="register__input"
-        formControlName="lastName"
-        required
-      />
-      <div
-        *ngIf="
-          registerForm.get('lastName')?.invalid &&
-          registerForm.get('lastName')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('lastName')?.hasError('required')"
-          >Le nom est obligatoire.</span
-        >
+  <div class="register__iconContainer">
+    <span class="icon icon--first"></span>
+    <span class="icon icon--second"></span>
+  </div>
+  <div class="register__container">
+    <h2 class="register__title">Inscription</h2>
+    <form
+      class="register__form"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="register__firstInputs">
+        <div class="register__field">
+          <label for="lastName" class="register__label">Nom</label>
+          <input
+            type="text"
+            class="register__input"
+            formControlName="lastName"
+            required
+          />
+          <div
+            *ngIf="
+              registerForm.get('lastName')?.invalid &&
+              registerForm.get('lastName')?.touched
+            "
+            class="error"
+          >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('lastName')?.hasError('required')"
+              >Le nom est obligatoire.</span
+            >
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="firstName" class="register__label">Prénom</label>
+          <input
+            type="text"
+            class="register__input"
+            formControlName="firstName"
+            required
+          />
+          <div
+            *ngIf="
+              registerForm.get('firstName')?.invalid &&
+              registerForm.get('firstName')?.touched
+            "
+            class="error"
+          >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('firstName')?.hasError('required')"
+              >Le prénom est obligatoire.</span
+            >
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="age" class="register__label">Âge</label>
+          <input
+            type="number"
+            class="register__input"
+            formControlName="age"
+            required
+            min="18"
+          />
+          <div
+            *ngIf="
+              registerForm.get('age')?.invalid &&
+              registerForm.get('age')?.touched
+            "
+            class="error"
+          >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('age')?.hasError('required')"
+              >L'âge est obligatoire.</span
+            >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('age')?.hasError('min')"
+              >Vous devez avoir au moins 18 ans.</span
+            >
+          </div>
+        </div>
+
+        <div class="register__field">
+          <label for="phone" class="register__label">Téléphone</label>
+          <input
+            type="tel"
+            class="register__input"
+            formControlName="phone"
+            required
+            pattern="^(\+\d{1,3}[- ]?)?\d{10}$"
+          />
+          <div
+            *ngIf="
+              registerForm.get('phone')?.invalid &&
+              registerForm.get('phone')?.touched
+            "
+            class="error"
+          >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('phone')?.hasError('required')"
+              >Le numéro de téléphone est obligatoire.</span
+            >
+            <span
+              class="register__message"
+              *ngIf="registerForm.get('phone')?.hasError('pattern')"
+              >Numéro de téléphone invalide.</span
+            >
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="register__field">
-      <label for="firstName" class="register__label">Prénom</label>
-      <input
-        type="text"
-        class="register__input"
-        formControlName="firstName"
-        required
-      />
-      <div
-        *ngIf="
-          registerForm.get('firstName')?.invalid &&
-          registerForm.get('firstName')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('firstName')?.hasError('required')"
-          >Le prénom est obligatoire.</span
+      <div class="register__field">
+        <label for="email" class="register__label">Email</label>
+        <input
+          type="email"
+          class="register__input"
+          formControlName="email"
+          required
+        />
+        <div
+          *ngIf="
+            registerForm.get('email')?.invalid &&
+            registerForm.get('email')?.touched
+          "
+          class="error"
         >
+          <span
+            class="register__message"
+            *ngIf="registerForm.get('email')?.hasError('required')"
+            >L'email est obligatoire.</span
+          >
+          <span
+            class="register__message"
+            *ngIf="registerForm.get('email')?.hasError('email')"
+            >Format d'email invalide.</span
+          >
+        </div>
       </div>
-    </div>
 
-    <div class="register__field">
-      <label for="age" class="register__label">Âge</label>
-      <input
-        type="number"
-        class="register__input"
-        formControlName="age"
-        required
-        min="18"
-      />
-      <div
-        *ngIf="
-          registerForm.get('age')?.invalid && registerForm.get('age')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('age')?.hasError('required')"
-          >L'âge est obligatoire.</span
+      <div class="register__field">
+        <label for="password" class="register__label">Mot de passe</label>
+        <input
+          type="password"
+          class="register__input"
+          formControlName="password"
+          required
+        />
+        <div
+          *ngIf="
+            registerForm.get('password')?.invalid &&
+            registerForm.get('password')?.touched
+          "
+          class="error"
         >
-        <span *ngIf="registerForm.get('age')?.hasError('min')"
-          >Vous devez avoir au moins 18 ans.</span
-        >
+          <span
+            class="register__message"
+            *ngIf="registerForm.get('password')?.hasError('required')"
+            >Le mot de passe est obligatoire.</span
+          >
+          <span
+            class="register__message"
+            *ngIf="registerForm.get('password')?.hasError('minlength')"
+            >Minimum 8 caractères.</span
+          >
+          <span
+            class="register__message"
+            *ngIf="registerForm.get('password')?.hasError('pattern')"
+            >Doit contenir majuscule, minuscule, chiffre et caractère
+            spécial.</span
+          >
+        </div>
       </div>
-    </div>
 
-    <div class="register__field">
-      <label for="phone" class="register__label">Téléphone</label>
-      <input
-        type="tel"
-        class="register__input"
-        formControlName="phone"
-        required
-        pattern="^(\+\d{1,3}[- ]?)?\d{10}$"
-      />
-      <div
-        *ngIf="
-          registerForm.get('phone')?.invalid &&
-          registerForm.get('phone')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('phone')?.hasError('required')"
-          >Le numéro de téléphone est obligatoire.</span
-        >
-        <span *ngIf="registerForm.get('phone')?.hasError('pattern')"
-          >Numéro de téléphone invalide.</span
-        >
-      </div>
-    </div>
+      <button class="register__button" type="submit">S'inscrire</button>
+    </form>
 
-    <div class="register__field">
-      <label for="email" class="register__label">Email</label>
-      <input
-        type="email"
-        class="register__input"
-        formControlName="email"
-        required
-      />
-      <div
-        *ngIf="
-          registerForm.get('email')?.invalid &&
-          registerForm.get('email')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('email')?.hasError('required')"
-          >L'email est obligatoire.</span
-        >
-        <span *ngIf="registerForm.get('email')?.hasError('email')"
-          >Format d'email invalide.</span
-        >
-      </div>
-    </div>
-
-    <div class="register__field">
-      <label for="password" class="register__label">Mot de passe</label>
-      <input
-        type="password"
-        class="register__input"
-        formControlName="password"
-        required
-      />
-      <div
-        *ngIf="
-          registerForm.get('password')?.invalid &&
-          registerForm.get('password')?.touched
-        "
-        class="error"
-      >
-        <span *ngIf="registerForm.get('password')?.hasError('required')"
-          >Le mot de passe est obligatoire.</span
-        >
-        <span *ngIf="registerForm.get('password')?.hasError('minlength')"
-          >Minimum 8 caractères.</span
-        >
-        <span *ngIf="registerForm.get('password')?.hasError('pattern')"
-          >Doit contenir majuscule, minuscule, chiffre et caractère
-          spécial.</span
-        >
-      </div>
-    </div>
-
-    <button class="register__button" type="submit">S'inscrire</button>
-  </form>
-
-  <p class="register__message" *ngIf="message">{{ message }}</p>
+    <p class="register__message" *ngIf="message">{{ message }}</p>
+  </div>
 </div>

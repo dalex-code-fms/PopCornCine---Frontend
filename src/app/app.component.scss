@@ -16,7 +16,6 @@
     }
 
     &__btnContainer {
-        width: 20%;
         display: flex;
         justify-content: space-between;
         gap: 2.5rem;
@@ -50,6 +49,70 @@
         &:hover {
             text-shadow: 0 0 10px $secondaryColor, 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
             box-shadow: 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+        }
+    }
+
+    &__createEventBtn {
+        background-color: $secondaryColor;
+        border-radius: 3rem;
+        padding: 0.5rem 2rem; 
+        text-shadow: 0 0 5px $secondaryColor, 0 0 10px $secondaryColor, 0 0 15px $secondaryColor;
+        box-shadow: 0 0 10px $secondaryColor, 0 0 15px $secondaryColor;
+        color: white;
+        transition: all 0.3s ease;
+
+        &:hover {
+            text-shadow: 0 0 10px $secondaryColor, 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+            box-shadow: 0 0 20px $secondaryColor, 0 0 30px $secondaryColor;
+        }
+    }
+
+    &__dashboardBtnContainer {
+        position: relative;
+
+        &:hover .navbar__dropdown {
+            display: block;
+        }
+    }
+    
+    &__dashboardBtn {
+        display: block;
+        width: 4rem;
+        height: 4rem;
+        border: 1px solid $primaryColor;
+        border-radius: 2rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            filter: drop-shadow(0 0 5px #1E90FF) brightness(1);
+        }
+    }
+
+    &__dropdown {
+        display: none;
+        position: absolute;
+        top: 100%; /* Juste en dessous du bouton */
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 1rem;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        min-width: 15rem;
+        z-index: 10;
+        padding: 1rem;
+
+        a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: $textColor;
+            text-decoration: none;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: lighten(rgba(0, 0, 0, 0.4), 20%);
+            }
         }
     }
 }

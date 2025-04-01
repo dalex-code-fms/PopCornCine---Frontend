@@ -10,9 +10,13 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   private loggedInSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  private photoUrlSubject = new BehaviorSubject<string | null>(null);
   loggedIn$ = this.loggedInSubject.asObservable();
+  photoUrl$ = this.photoUrlSubject.asObservable();
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService) {
+    this.loadInitialPhotoUrl();
+  }
 
   login(credentials: LoginCredentials) {
     return this.apiService.getUserByEmail(credentials);
@@ -21,6 +25,7 @@ export class AuthService {
   saveTokenIntoLocalStorage(token: string): void {
     localStorage.setItem('token', token);
     this.loggedInSubject.next(true);
+    this.loadInitialPhotoUrl();
   }
 
   isLoggedIn(): boolean {
@@ -40,10 +45,31 @@ export class AuthService {
 
   logOut(): void {
     localStorage.removeItem('token');
-    this.loggedInSubject.next(true);
+    this.loggedInSubject.next(false);
+    this.photoUrlSubject.next(null);
   }
 
   register(credentials: RegisterCredentials) {
     return this.apiService.saveUser(credentials);
+  }
+
+  private loadInitialPhotoUrl(): void {
+    if (this.isLoggedIn()) {
+      this.apiService.getUserProfile().subscribe({
+        next: (user) => {
+          const photoUrl = user.photoUrl
+            ? `http://localhost:8080${user.photoUrl}`
+            : null;
+          this.photoUrlSubject.next(photoUrl);
+        },
+        error: () => {
+          this.photoUrlSubject.next(null);
+        },
+      });
+    }
+  }
+
+  updatePhotoUrl(photoUrl: string | null): void {
+    this.photoUrlSubject.next(photoUrl);
   }
 }

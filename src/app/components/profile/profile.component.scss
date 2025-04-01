@@ -1,0 +1,100 @@
+@import '../../../styles.scss';
+
+.profile {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+
+    &__title {
+      text-align: center;
+      font-family: $secondaryFont;
+      font-size: 3.2rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #1E90FF, 0 0 10px #1E90FF, 0 0 15px #1E90FF, 0 0 20px #1E90FF;
+    }
+    
+    &__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__firstInputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  
+    &__field {
+      margin-bottom: 15px;
+    }
+  
+    &__label {
+      margin-left: 1.5rem;
+    }
+  
+    &__input {
+      width: 100%;
+      border: 1px solid #1E90FF;
+      border-radius: 1rem;
+      height: 4rem;
+      background-color: rgba(0, 0, 0, 0.5);
+      caret-color: #1E90FF;
+      padding: .6rem 1.5rem;
+      color: $textColor;
+      
+    }  
+
+    &__photo-preview {
+        margin-top: 10px;
+        text-align: center;
+      }
+    
+      &__photo-preview-img {
+        width: 100px; 
+        height: 100px; 
+        object-fit: cover; 
+        border-radius: 50%; 
+        border: 2px solid #ddd;
+        border: .2rem solid $primaryColor;
+
+      }
+    
+      &__button {
+        align-self: center;
+        background-color: $primaryColor;
+        border-radius: 3rem;
+        margin-top: 2rem;
+        padding: 0.5rem 2rem;
+        text-shadow: 0 0 5px $primaryColor, 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        box-shadow: 0 0 10px $primaryColor, 0 0 15px $primaryColor;
+        color: white;
+        transition: all 0.3s ease;
+        
+        &:hover {
+            text-shadow: 0 0 10px $primaryColor, 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+            box-shadow: 0 0 20px $primaryColor, 0 0 30px $primaryColor;
+        }
+      }
+    
+      &__message {
+        text-align: center;
+        color: green;
+        font-size: 14px;
+        margin-top: 20px;
+      }  
+
+      textarea{
+        height: 10rem;
+      }
+
+      .error {
+        color: red;
+        font-size: 12px;
+      }
+  }
+
+  
+
+  
+
+  
